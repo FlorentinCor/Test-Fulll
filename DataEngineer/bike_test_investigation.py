@@ -14,6 +14,8 @@ class TestBikeShareData(unittest.TestCase):
 
         df = pd.DataFrame(data)
 
+        # TO DO : add more tests for the other keys in the result dictionary
+
         df['Start Time'] = pd.to_datetime(df['Start Time'])
         df['End Time'] = pd.to_datetime(df['End Time'])
 
@@ -25,8 +27,9 @@ class TestBikeShareData(unittest.TestCase):
         self.assertEqual(result['best_month'], 1)
         self.assertEqual(result['best_day'], 'Monday')
        
-        # TO DO : add more tests for the other keys in the result dictionary
-    
+    # TO DO : base on the above test, create tests for station_stats, trip_duration_stats and user_stats function. Make sure you cover common corner cases.
+
+
     def test_station_stats(self):
         data = {
             'Start Station': ['Streeter Dr & Grand Ave', 'Green St & Madison St', 'Clark St & Armitage Ave A'],
@@ -50,11 +53,6 @@ class TestBikeShareData(unittest.TestCase):
 
         self.assertEqual(result['Trip Duration'], 5000)
         self.assertEqual(result['Mean Duration'], 1250)
-
-
-    def test_time_stats_missing_data(self):
-    # TO DO : base on the above test, create tests for station_stats, trip_duration_stats and user_stats function. Make sure you cover common corner cases.  
-        pass
 
 if __name__ == '__main__':
     unittest.main()

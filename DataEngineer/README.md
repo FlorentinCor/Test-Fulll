@@ -2,56 +2,55 @@
 
     Def get_filters(): 
 
-Utilisation de la fonction While True pour effectuer une boucle avec une condition de sortie "Break" et ajout de l'input pour aiguiller à ce que le texte corresponde bien au nom d'un Excel, sinon donnée invalide
+Utilisation de la boucle while True pour effectuer une boucle avec une condition de sortie via break. Ajout de la saisie utilisateur (input) pour s'assurer que le texte corresponde bien au nom d'un fichier Excel ; sinon, afficher "donnée invalide".
 
-Pour les mois et les jours, même principe mais on stock tout dans une variable qu'on appellera en suivant dans le While True
+Pour les mois et les jours, même principe, mais tout est stocké dans une variable qui sera appelée dans la boucle while True.
 
 
     Def load_data(city, month, day):
 
-Lecture du csv en fonction de la ville choisie ainsi que la conversion de la colonne Start Time
-Ajout de "errors='coerce'" pour gérer les données invalides ou mal formatées.
+Lecture du fichier CSV en fonction de la ville choisie ainsi que conversion de la colonne Start Time.
+Ajout de errors='coerce' pour gérer les données invalides ou mal formatées.
 
-On extrait les colonnes mois et jour de la colonne start time
-On ajoute des boucles sur le mois et les jours pour leur donner une valeur et pouvoir filtrer sauf si l'utilisateur choisi 'All', on ne filtre pas
+On extrait les colonnes mois et jour de la colonne Start Time.
+On ajoute des boucles pour le mois et les jours afin de les assigner correctement et pouvoir filtrer. Si l'utilisateur choisit 'All', aucun filtre n'est appliqué.
 
 
     Def time_stats(df):
 
-On ajoute une boucke si aucune donnée pour informer l'utilisateur
-On utilise la fonction mode() pour afficher les valeurs les plus fréquentes
+Ajout d'une boucle pour vérifier s'il n'y a aucune donnée afin d'informer l'utilisateur.
+Utilisation de la fonction mode() pour afficher les valeurs les plus fréquentes.
+Pour l'heure la plus fréquente, on ajoute la colonne 'hour' dans le DataFrame.
 
-Pour l'heure la plus fréqente, on ajoute la colonne 'hour' dans le Dataframe
+Le "return" sera intégré plus loin (ainsi que pour la station et le temps).
 
 
     Def station_stats(df):
 
-Même principe pour les stations les pus fréquentes
-Pour avoir la combinaison des deux, on ajoute une nouvelle colonne avec les 2 éléments et on réutilise la foncion mode()
+Même principe pour les stations les plus fréquentes.
+Pour obtenir la combinaison des deux stations les plus utilisées, on ajoute une nouvelle colonne contenant les deux éléments combinés, puis on utilise la fonction mode().
 
 
     Def trip_duration_stats(df):
 
-Pour calculer le temps total et la moyenne on utilise les fonctions sum() et mean(), les données sont en secondes, on les affichent en minute et en heure pour plus de lisibilité
-On ajoute :.2f pour avoir les résultats avec 2 décimales
+Pour calculer le temps total et la moyenne, on utilise les fonctions sum() et mean(). Les données étant en secondes, on les affiche en minutes et en heures pour plus de lisibilité.
+On ajoute :.2f pour afficher les résultats avec deux décimales.
 
 
     Def user_stats(df):
 
-Utilisation de la fonction "df[].unique()" pour vérifier les valeurs dans les colonnes
-On utilise une boucle si colonne introuvable alors "Pas de données", sinon on compte le nombre de fois où le texte apparait et on le somme
-Utilisation les fonction min et max pour l'année la plus récente et ancienne
+Utilisation de la fonction df[].unique() pour vérifier les valeurs dans les colonnes.
+On utilise une boucle pour vérifier si une colonne est introuvable ; dans ce cas, on affiche "Pas de données". Sinon, on compte le nombre de fois où le texte apparaît et on fait la somme.
+Utilisation des fonctions min() et max() pour afficher l'année la plus récente et la plus ancienne.
 
 
 TestBikeShareData(unittest.TestCase):
 
     Def test_time_stats(self):
 
-Ajout d'une fonction "return" dans "def time_stats(df)" pour récupérer les valeurs du test et ainsi les utiliser
-Création du DataFrame et ajout des colonnes "Start Time" et "End Time", on les converti en datetime et on extrait le mois et le jour
+Ajout d'une fonction return dans def time_stats(df) pour récupérer les valeurs du test et les utiliser.
+Création du DataFrame et ajout des colonnes Start Time et End Time, conversion en datetime, et extraction des mois et des jours.
 
-Avec la fontion self.assertEqual, on vérifie que les valeurs soient les mêmes que les résultats du premier fichier
+Avec la fonction self.assertEqual, on vérifie que les valeurs sont identiques aux résultats du fichier initial.
 
-On réitère les tests avec les stations et stats du voyage
-
-
+On réitère les tests avec les stations et les statistiques de voyage.

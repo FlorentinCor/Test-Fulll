@@ -107,14 +107,15 @@ def time_stats(df):
     best_hour = df['hour'].mode()[0]
     print(f"Best hour is : {best_hour}")
 
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print("-" * 40)
+
     return {
         'best_month': best_month,
         'best_day': best_day,
         'best_hour': best_hour
     }
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
-    print("-" * 40)
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
